@@ -1,3 +1,7 @@
+import 'package:besnikbeguncaportfolio/ChartPage.dart';
+import 'package:besnikbeguncaportfolio/MailPage.dart';
+import 'package:besnikbeguncaportfolio/PolicePage.dart';
+import 'package:besnikbeguncaportfolio/profile.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -15,6 +19,12 @@ class _HomeScreenState extends State<HomeScreen> {
       _selectedIndex = index;  // Updates the selected tab
     });
   }
+  final List<Widget> _pages=[
+    ProfilePage(),
+    Mailpage(),
+    Chartpage(),
+    Policepage(),
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -23,12 +33,8 @@ class _HomeScreenState extends State<HomeScreen> {
       appBar: AppBar(
         backgroundColor: Colors.transparent,
       ),
-      body: Center(
-        child: Text(
-          "Selected Tab: $_selectedIndex",
-          style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-        ),
-      ),
+      body:
+      _pages[_selectedIndex],
       bottomNavigationBar: Padding(
         padding: const EdgeInsets.only(bottom: 60, left: 20, right: 20), // Space from bottom
         child: Container(
@@ -47,7 +53,7 @@ class _HomeScreenState extends State<HomeScreen> {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              _buildNavItem(Icons.grid_view_outlined, Icons.grid_view, 0),
+              _buildNavItem(Icons.grid_view_outlined, Icons.grid_view_rounded, 0),
               _buildNavItem(Icons.mail_outline, Icons.mail, 1),
               _buildNavItem(Icons.show_chart_outlined, Icons.show_chart, 2),
               _buildNavItem(Icons.local_police_outlined, Icons.local_police, 3),
